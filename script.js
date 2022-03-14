@@ -15,8 +15,8 @@ buttonHide.addEventListener ('click', function(){
 
 let formElement = document.querySelector('.popup__form'); 
 
-let nameInput = document.querySelector('.popup__form-item_name');
-let jobInput = document.querySelector('.popup__form-item_job');
+let nameInput = document.querySelector('.popup__form-item_type_name');
+let jobInput = document.querySelector('.popup__form-item_type_job');
 
 function formSubmitHandler (evt) {
     evt.preventDefault(); 

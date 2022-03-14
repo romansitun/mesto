@@ -11,6 +11,5 @@
     column-gap: 10px;
     row-gap: 14px;
     grid-template-columns: min-content 28px;
-    grid-template-rows: min-content min-content;
   }
 }
