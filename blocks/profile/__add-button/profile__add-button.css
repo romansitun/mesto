@@ -13,6 +13,7 @@
   background-image: url("../../../images/add-button.svg");
   background-repeat: no-repeat;
   background-position: center;
+  transition: opacity 200ms ease-in-out;
 }
 
 .profile__add-button:hover {

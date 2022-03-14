@@ -12,6 +12,7 @@
   background-image: url("../../../images/button-edit.svg");
   background-repeat: no-repeat;
   background-position: center;
+  transition: opacity 200ms ease-in-out;
 }
 
 .profile__button:hover {

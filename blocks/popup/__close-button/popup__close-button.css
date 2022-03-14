@@ -12,6 +12,7 @@
   position: absolute;
   right: -40px;
   top: -40px;
+  transition: opacity 200ms ease-in-out;
 }
 
 .popup__close-button:hover {
@@ -23,6 +24,7 @@
   .popup__close-button {
     width: 20px;
     height: 20px;
+    background-image: url("../../../images/close-minibutton.svg");
     right: 0;
     top: -36px;
   }
