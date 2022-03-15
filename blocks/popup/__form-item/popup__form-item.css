@@ -31,30 +31,30 @@
 }
 
 ::-webkit-input-placeholder {
-  font-family: "Inter";
+  font-family: "Inter", "Arial ", sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 1.2;
+  font-size: 14px;
   line-height: 17px;
 }
 ::-moz-placeholder {
-  font-family: "Inter";
+  font-family: "Inter", "Arial ", sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 1.2;
+  font-size: 14px;
   line-height: 17px;
 }
 :-ms-input-placeholder {
-  font-family: "Inter";
+  font-family: "Inter", "Arial ", sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 1.2;
+  font-size: 14px;
   line-height: 17px;
 }
 :-moz-placeholder {
-  font-family: "Inter";
+  font-family: "Inter", "Arial ", sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 1.2;
+  font-size: 14px;
   line-height: 17px;
 }
