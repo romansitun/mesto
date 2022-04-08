@@ -37,110 +37,7 @@
             ></button>
           </section>
 
-          <section class="elements">
-            <article class="element">
-              <img
-                src="./images/Karachaevsk.jpg"
-                alt="Карачаевск"
-                class="element__image"
-              />
-              <div class="element__bottom">
-                <h2 class="element__title">Карачаевск</h2>
-                <button
-                  class="element__like-button"
-                  type="button"
-                  aria-label="Поставить лайк"
-                >
-                  <img src="./images/like-button.svg" alt="Кнопка Лайк" />
-                </button>
-              </div>
-            </article>
-            <article class="element">
-              <img
-                src="./images/Elbrus.jpg"
-                alt="Гора Эльбрус"
-                class="element__image"
-              />
-              <div class="element__bottom">
-                <h2 class="element__title">Гора Эльбрус</h2>
-                <button
-                  class="element__like-button"
-                  type="button"
-                  aria-label="Поставить лайк"
-                >
-                  <img src="./images/like-button.svg" alt="Кнопка Лайк" />
-                </button>
-              </div>
-            </article>
-            <article class="element">
-              <img
-                src="./images/Dombai.jpg"
-                alt="Домбай"
-                class="element__image"
-              />
-              <div class="element__bottom">
-                <h2 class="element__title">Домбай</h2>
-                <button
-                  class="element__like-button"
-                  type="button"
-                  aria-label="Поставить лайк"
-                >
-                  <img src="./images/like-button.svg" alt="Кнопка Лайк" />
-                </button>
-              </div>
-            </article>
-            <article class="element">
-              <img
-                src="./images/Elbrus.jpg"
-                alt="Гора Эльбрус"
-                class="element__image"
-              />
-              <div class="element__bottom">
-                <h2 class="element__title">Гора Эльбрус</h2>
-                <button
-                  class="element__like-button"
-                  type="button"
-                  aria-label="Поставить лайк"
-                >
-                  <img src="./images/like-button.svg" alt="Кнопка Лайк" />
-                </button>
-              </div>
-            </article>
-            <article class="element">
-              <img
-                src="./images/Dombai.jpg"
-                alt="Домбай"
-                class="element__image"
-              />
-              <div class="element__bottom">
-                <h2 class="element__title">Домбай</h2>
-                <button
-                  class="element__like-button"
-                  type="button"
-                  aria-label="Поставить лайк"
-                >
-                  <img src="./images/like-button.svg" alt="Кнопка Лайк" />
-                </button>
-              </div>
-            </article>
-            <article class="element">
-              <img
-                src="./images/Karachaevsk.jpg"
-                alt="Карачаево-Черкесия"
-                class="element__image"
-              />
-              <div class="element__bottom">
-                <h2 class="element__title">Карачаево-Черкесия</h2>
-                <button
-                  class="element__like-button"
-                  type="button"
-                  aria-label="Поставить лайк"
-                >
-                  <img src="./images/like-button.svg" alt="Кнопка Лайк" />
-                </button>
-              </div>
-            </article>
-          </section>
+          <section class="elements"></section>
         </main>
 
         <footer class="footer">
@@ -148,10 +45,11 @@
         </footer>
       </div>
     </div>
-    <div class="popup">
+
+    <div class="popup popup_type_edit">
       <div class="popup__content">
         <button
-          class="popup__close-button"
+          class="popup__close-button popup__close-button_place_edit"
           type="button"
           aria-label="Закрыть"
         ></button>
@@ -187,6 +85,86 @@
         </form>
       </div>
     </div>
+
+    <div class="popup popup_type_add-image">
+      <div class="popup__content">
+        <button
+          class="popup__close-button popup__close-button_place_add-image"
+          type="button"
+          aria-label="Закрыть"
+        ></button>
+        <h2 class="popup__title">Новое место</h2>
+
+        <form
+          id="add-image-popup"
+          name="popup"
+          action="/apply/"
+          method="POST"
+          class="popup__form popup__form_type_add-image"
+        >
+          <input
+            type="text"
+            class="popup__form-item popup__form-item_type_title"
+            aria-label="Введите заголовок для изображения"
+            name="name"
+            id="photo-title-input"
+            placeholder="Название"
+            required
+          />
+
+          <input
+            type="url"
+            class="popup__form-item popup__form-item_type_link"
+            name="link"
+            id="photo-link-input"
+            aria-label="Введите ссылку на изображение"
+            placeholder="Ссылка на картинку"
+            required
+          />
+
+          <button
+            type="submit"
+            class="popup__form-button popup__form-button_action_add"
+          >
+            Создать
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="popup popup_type_open-image">
+      <div class="popup__background">
+        <button
+          class="popup__close-button popup__close-button_place_open-image"
+          type="button"
+          aria-label="Закрыть"
+        ></button>
+        <img alt="#" src="#" class="popup__photo" />
+        <h2 class="popup__description"></h2>
+      </div>
+    </div>
+
+    <template id="place-template">
+      <article class="element">
+        <img class="element__image" />
+        <button
+          class="element__trash-button"
+          type="button"
+          aria-label="Удалить"
+        ></button>
+        <div class="element__bottom">
+          <h2 class="element__title"></h2>
+          <button
+            class="element__like-button"
+            type="button"
+            aria-label="Поставить лайк"
+          >
+            <img src="./images/like-button.svg" alt="Кнопка Лайк" />
+          </button>
+        </div>
+      </article>
+    </template>
+
     <script src="script.js"></script>
   </body>
 </html>
