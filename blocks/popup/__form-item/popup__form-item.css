@@ -15,9 +15,7 @@
   -moz-text-size-adjust: 100%;
 }
 
-.popup__form-item:first-of-type {
-  margin-bottom: 30px;
-}
+
 
 .popup__form-item:focus {
   outline: none;
