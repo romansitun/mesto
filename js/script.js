@@ -3,6 +3,7 @@ const buttonShowProfilePopup = document.querySelector(".profile__button");
 const buttonHideProfilePopup = document.querySelector(
   ".popup__close-button_place_edit"
 );
+
 const profileFormElement = document.querySelector(".popup__form");
 const nameInput = document.querySelector(".popup__form-item_type_name");
 const jobInput = document.querySelector(".popup__form-item_type_job");
@@ -42,8 +43,7 @@ function onDocumentKeyUp(event) {
 
 function hanldeOverlayClose(event) {
   if (event.target.classList.contains("popup_opened")) {
-    const activePopup = document.querySelector(".popup_opened");
-    closePopup(activePopup);
+    closePopup(event.target);
   }
 }
 
@@ -119,6 +119,11 @@ function renderInitialCards(initialCards) {
 
 renderInitialCards(initialCards);
 
+function disableButton(buttonElement) {
+  buttonElement.disabled = true;
+  buttonElement.classList.add(config.inactiveButtonClass);
+}
+
 function cardPopupFormSubmitHandler(evt) {
   evt.preventDefault();
 
@@ -126,6 +131,8 @@ function cardPopupFormSubmitHandler(evt) {
   (newCard.name = cardTitleInput.value), (newCard.link = cardLinkInput.value);
   placesContainer.prepend(createCard(newCard));
   closePopup(cardPopup);
+  evt.target.reset();
+  disableButton(evt.target.querySelector(".popup__form-button"));
 }
 
 imageAddFormElement.addEventListener("submit", cardPopupFormSubmitHandler);
