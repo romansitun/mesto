@@ -119,9 +119,9 @@ function renderInitialCards(initialCards) {
 
 renderInitialCards(initialCards);
 
-function disableButton(buttonElement) {
+function disableButton(buttonElement, { inactiveButtonClass }) {
   buttonElement.disabled = true;
-  buttonElement.classList.add(config.inactiveButtonClass);
+  buttonElement.classList.add(inactiveButtonClass);
 }
 
 function cardPopupFormSubmitHandler(evt) {
@@ -132,7 +132,7 @@ function cardPopupFormSubmitHandler(evt) {
   placesContainer.prepend(createCard(newCard));
   closePopup(cardPopup);
   evt.target.reset();
-  disableButton(evt.target.querySelector(".popup__form-button"));
+  disableButton(evt.target.querySelector(".popup__form-button"), config);
 }
 
 imageAddFormElement.addEventListener("submit", cardPopupFormSubmitHandler);
