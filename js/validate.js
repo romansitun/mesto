@@ -9,7 +9,7 @@ const config = {
 
 // Функция isValid теперь принимает formElement и inputElement,
 // а не берёт их из внешней области видимости
-const isValid = (formElement, inputElement) => {
+const isValid = (formElement, inputElement, config) => {
   if (!inputElement.validity.valid) {
     // showInputError теперь получает параметром форму, в которой
     // находится проверяемое поле, и само это поле
@@ -70,7 +70,7 @@ function toggleButtonState(inputList, buttonElement, { inactiveButtonClass }) {
 
 const setEventListeners = (
   formElement,
-  { inputSelector, submitButtonSelector }
+  { inputSelector, submitButtonSelector, ...config }
 ) => {
   // Находим все поля внутри формы,
   // сделаем из них массив методом Array.from
@@ -83,7 +83,7 @@ const setEventListeners = (
     inputElement.addEventListener("input", () => {
       // Внутри колбэка вызовем isValid,
       // передав ей форму и проверяемый элемент
-      isValid(formElement, inputElement);
+      isValid(formElement, inputElement, config);
       toggleButtonState(inputList, buttonElement, config);
     });
   });

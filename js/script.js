@@ -33,6 +33,8 @@ const buttonHideImagePopup = document.querySelector(
 );
 const imageName = document.querySelector(".popup__description");
 const photo = document.querySelector(".popup__photo");
+const inputList = Array.from(document.querySelectorAll(".popup__form-item"));
+const buttonElement = document.querySelector(".popup__form-button_action_add");
 
 function onDocumentKeyUp(event) {
   if (event.key === "Escape") {
@@ -119,20 +121,17 @@ function renderInitialCards(initialCards) {
 
 renderInitialCards(initialCards);
 
-function disableButton(buttonElement, { inactiveButtonClass }) {
-  buttonElement.disabled = true;
-  buttonElement.classList.add(inactiveButtonClass);
-}
-
 function cardPopupFormSubmitHandler(evt) {
   evt.preventDefault();
 
   const newCard = {};
-  (newCard.name = cardTitleInput.value), (newCard.link = cardLinkInput.value);
+  newCard.name = cardTitleInput.value;
+  newCard.link = cardLinkInput.value;
+
   placesContainer.prepend(createCard(newCard));
   closePopup(cardPopup);
   evt.target.reset();
-  disableButton(evt.target.querySelector(".popup__form-button"), config);
+  toggleButtonState(inputList, buttonElement, config);
 }
 
 imageAddFormElement.addEventListener("submit", cardPopupFormSubmitHandler);
