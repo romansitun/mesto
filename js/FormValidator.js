@@ -1,24 +1,24 @@
 class FormValidator {
-  constructor(config, formSelector) {
+  constructor(config, formElement) {
     this._inputSelector = config.inputSelector;
     this._submitButtonSelector = config.submitButtonSelector;
     this._inactiveButtonClass = config.inactiveButtonClass;
     this._inputErrorClass = config.inputErrorClass;
     this._errorClass = config.errorClass;
 
-    this._formSelector = formSelector;
+    this._formElement = formElement;
 
     this._inputList = Array.from(
-      this._formSelector.querySelectorAll(this._inputSelector)
+      this._formElement.querySelectorAll(this._inputSelector)
     );
-    this._buttonElement = this._formSelector.querySelector(
+    this._buttonElement = this._formElement.querySelector(
       this._submitButtonSelector
     );
   }
 
   _showInputError = (inputElement, errorMessage) => {
     // Находим элемент ошибки внутри самой функции
-    const _errorElement = this._formSelector.querySelector(
+    const _errorElement = this._formElement.querySelector(
       `.${inputElement.id}-error`
     );
 
@@ -28,7 +28,7 @@ class FormValidator {
   };
 
   _hideInputError = (inputElement) => {
-    const _errorElement = this._formSelector.querySelector(
+    const _errorElement = this._formElement.querySelector(
       `.${inputElement.id}-error`
     );
 
@@ -83,7 +83,7 @@ class FormValidator {
   }
 
   enableValidation() {
-    this._formSelector.addEventListener("submit", (evt) => {
+    this._formElement.addEventListener("submit", (evt) => {
       // У каждой формы отменим стандартное поведение
       evt.preventDefault();
     });

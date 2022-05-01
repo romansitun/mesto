@@ -1,16 +1,10 @@
-import {
-  buttonHideImagePopup,
-  imageName,
-  photo,
-  openPopup,
-  imagePopup,
-  closePopup,
-} from "./index.js";
+import { imageName, photo, openPopup, imagePopup } from "./index.js";
 
 class Card {
   constructor(data, cardSelector) {
     this._name = data.name;
     this._link = data.link;
+
     this._cardSelector = cardSelector;
   }
 
@@ -34,19 +28,14 @@ class Card {
     this.classList.toggle("element__like-button_active");
   }
 
-  _handleDeleteCard() {
-    this.closest(".element").remove();
-  }
+  _handleDeleteCard = () => {
+    this._element.remove();
+    this._element = null;
+  };
 
   _setEventListeners() {
-    this._element
-      .querySelector(".element__image")
-      .addEventListener("click", () => {
-        this._openImagePopup();
-      });
-
-    buttonHideImagePopup.addEventListener("click", () => {
-      closePopup(imagePopup);
+    this._cardImage.addEventListener("click", () => {
+      this._openImagePopup();
     });
 
     this._element
@@ -60,10 +49,13 @@ class Card {
 
   generateCard() {
     this._element = this._getTemplate();
+    this._cardImage = this._element.querySelector(".element__image");
     this._setEventListeners();
 
     this._element.querySelector(".element__title").textContent = this._name;
-    this._element.querySelector(".element__image").src = this._link;
+
+    this._cardImage.alt = this._name;
+    this._cardImage.src = this._link;
 
     return this._element;
   }

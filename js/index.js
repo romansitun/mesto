@@ -60,7 +60,6 @@ export const imageName = document.querySelector(".popup__description");
 export const photo = document.querySelector(".popup__photo");
 
 const config = {
-  formSelector: ".popup__form",
   inputSelector: ".popup__form-item",
   submitButtonSelector: ".popup__form-button",
   inactiveButtonClass: "popup__form-button_inactive",
@@ -85,14 +84,14 @@ function hanldeOverlayClose(event) {
 export function openPopup(popup) {
   popup.classList.add("popup_opened");
   document.addEventListener("keyup", onDocumentKeyUp);
-  document.addEventListener("click", hanldeOverlayClose);
+  popup.addEventListener("click", hanldeOverlayClose);
 }
 
 //универсальная функция для закрытия попапа
 export function closePopup(popup) {
   popup.classList.remove("popup_opened");
   document.removeEventListener("keyup", onDocumentKeyUp);
-  document.removeEventListener("click", hanldeOverlayClose);
+  document.removeEventListener("mousedown", hanldeOverlayClose);
 }
 
 //Для открытия попапа редактирования профиля должна быть так же вынесена отдельная функция
@@ -120,17 +119,24 @@ function cardPopupFormSubmitHandler(evt) {
   validationPopupAdd.toggleButtonState();
 }
 
+const generateCard = (card) => new Card(card, "#place-template").generateCard();
+
 function addCard() {
-  const card = new Card(
+  const newCard = generateCard(
     {
       name: cardTitleInput.value,
       link: cardLinkInput.value,
     },
     "#place-template"
   );
-  const newCard = card.generateCard();
+
   placesContainer.prepend(newCard);
 }
+
+initialCards.forEach((card) => {
+  const cardElement = generateCard(card, "#place-template");
+  document.querySelector(".elements").append(cardElement);
+});
 
 const validationPopupEdit = new FormValidator(config, profileFormElement);
 const validationPopupAdd = new FormValidator(config, imageAddFormElement);
@@ -152,10 +158,4 @@ buttonHideCardPopup.addEventListener("click", () => {
 });
 buttonHideImagePopup.addEventListener("click", () => {
   closePopup(imagePopup);
-});
-
-initialCards.forEach((item) => {
-  const card = new Card(item, "#place-template");
-  const cardElement = card.generateCard();
-  document.querySelector(".elements").append(cardElement);
 });
