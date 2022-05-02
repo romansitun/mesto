@@ -84,14 +84,14 @@ function hanldeOverlayClose(event) {
 export function openPopup(popup) {
   popup.classList.add("popup_opened");
   document.addEventListener("keyup", onDocumentKeyUp);
-  popup.addEventListener("click", hanldeOverlayClose);
+  popup.addEventListener("mousedown", hanldeOverlayClose);
 }
 
 //универсальная функция для закрытия попапа
 export function closePopup(popup) {
   popup.classList.remove("popup_opened");
   document.removeEventListener("keyup", onDocumentKeyUp);
-  document.removeEventListener("mousedown", hanldeOverlayClose);
+  popup.removeEventListener("mousedown", hanldeOverlayClose);
 }
 
 //Для открытия попапа редактирования профиля должна быть так же вынесена отдельная функция
@@ -135,7 +135,7 @@ function addCard() {
 
 initialCards.forEach((card) => {
   const cardElement = generateCard(card, "#place-template");
-  document.querySelector(".elements").append(cardElement);
+  placesContainer.append(cardElement);
 });
 
 const validationPopupEdit = new FormValidator(config, profileFormElement);
