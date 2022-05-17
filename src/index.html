@@ -5,19 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mesto</title>
-    <link rel="stylesheet" href="./pages/index.css" />
   </head>
   <body>
     <div class="page">
       <div class="page__container">
         <header class="header">
-          <img src="./images/logo.svg" alt="Логотип" class="header__logo" />
+          <img
+            src="<%=require('./images/logo.svg')%>"
+            alt="Логотип"
+            class="header__logo"
+          />
         </header>
 
         <main class="content">
           <section class="profile">
             <img
-              src="./images/Jak-Iv.jpg"
+              src="<%=require('./images/Jak-Iv.jpg')%>"
               alt="Картинка профиля"
               class="profile__image"
             />
@@ -172,11 +175,14 @@
             type="button"
             aria-label="Поставить лайк"
           >
-            <img src="./images/like-button.svg" alt="Кнопка Лайк" />
+            <img
+              src="<%=require('./images/like-button.svg')%>"
+              alt="Кнопка Лайк"
+            />
           </button>
         </div>
       </article>
     </template>
-    <script type="module" src="./pages/index.js"></script>
+    <script type="module" src="./index.js"></script>
   </body>
 </html>
