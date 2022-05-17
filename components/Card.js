@@ -1,10 +1,8 @@
-import { imageName, photo, openPopup, imagePopup } from "./index.js";
-
-class Card {
-  constructor(data, cardSelector) {
+export default class Card {
+  constructor(data, cardSelector, imagePopup) {
     this._name = data.name;
     this._link = data.link;
-
+    this._imagePopup = imagePopup;
     this._cardSelector = cardSelector;
   }
 
@@ -17,13 +15,6 @@ class Card {
     return cardElement;
   }
 
-  _openImagePopup() {
-    imageName.textContent = this._name;
-    photo.src = this._link;
-    photo.setAttribute("alt", imageName.textContent);
-    openPopup(imagePopup);
-  }
-
   _like() {
     this.classList.toggle("element__like-button_active");
   }
@@ -34,9 +25,7 @@ class Card {
   };
 
   _setEventListeners() {
-    this._cardImage.addEventListener("click", () => {
-      this._openImagePopup();
-    });
+    this._cardImage.addEventListener("click", this._imagePopup);
 
     this._element
       .querySelector(".element__like-button")
@@ -61,4 +50,4 @@ class Card {
   }
 }
 
-export default Card;
+
