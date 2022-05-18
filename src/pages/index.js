@@ -1,17 +1,17 @@
-import './pages/index.css';
-import Card from "./components/Card.js";
-import FormValidator from "./components/FormValidator.js";
+import './index.css';
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
 import {
   initialCards, profilePopup, buttonShowProfilePopup, profileFormElement,
   nameInput, jobInput, profileName, profileJob, buttonShowCardPopup, cardPopup,
-  imageAddFormElement, placesContainer, cardTitleInput, cardLinkInput, config, imagePopup
-} from './utils/constants.js';
+  imageAddFormElement, placesContainer, config, imagePopup
+} from '../utils/constants.js';
 
 
-import Section from './components/Section.js';
-import PopupWithImage from "./components/PopupWithImage.js";
-import PopupWithForm from "./components/PopupWithForm.js";
-import UserInfo from "./components/UserInfo.js";
+import Section from '../components/Section.js';
+import PopupWithImage from "../components/PopupWithImage.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import UserInfo from "../components/UserInfo.js";
 
 const userInfo = new UserInfo(profileName, profileJob)
 
@@ -31,7 +31,10 @@ editProfilePopup.setEventListeners();
 const addNewCardPopup = new PopupWithForm(cardPopup, {
   handleFormSubmit: (evt) => {
     evt.preventDefault();
-    addCard();
+    const data = addNewCardPopup.getInputValues();
+    const newCard = generateCard(data, "#place-template");
+    placesContainer.prepend(newCard);
+
     addNewCardPopup.close();
     evt.target.reset();
     validationPopupAdd.toggleButtonState();
@@ -65,17 +68,6 @@ const cardList = new Section({
 
 cardList.renderItems();
 
-function addCard() {
-  const newCard = generateCard(
-    {
-      name: cardTitleInput.value,
-      link: cardLinkInput.value,
-    },
-    "#place-template"
-  );
-
-  placesContainer.prepend(newCard);
-}
 
 
 const validationPopupEdit = new FormValidator(config, profileFormElement);
@@ -89,10 +81,13 @@ buttonShowProfilePopup.addEventListener("click", () => {
   const info = userInfo.getUserInfo();
   nameInput.value = info.name;
   jobInput.value = info.job;
+  validationPopupEdit.resetValidation();
   editProfilePopup.open();
+
 });
 
 
 buttonShowCardPopup.addEventListener("click", () => {
+  validationPopupAdd.resetValidation();
   addNewCardPopup.open();
 });
