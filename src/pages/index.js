@@ -33,8 +33,7 @@ const addNewCardPopup = new PopupWithForm(cardPopup, {
     evt.preventDefault();
     const data = addNewCardPopup.getInputValues();
     const newCard = generateCard(data, "#place-template");
-    placesContainer.prepend(newCard);
-
+    cardList.addItem(newCard);
     addNewCardPopup.close();
     evt.target.reset();
     validationPopupAdd.toggleButtonState();
@@ -61,7 +60,7 @@ const generateCard = (card) => new Card(card, "#place-template", openImagePopup)
 const cardList = new Section({
   items: initialCards, renderer: (item) => {
     const cardElement = generateCard(item, "#place-template");
-    placesContainer.append(cardElement);
+    cardList.addItem(cardElement);
   }
 }, placesContainer);
 
