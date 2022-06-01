@@ -30,7 +30,7 @@ let userId = null;
 api.getInitialData()
   .then((data) => {
     const [userData, cardsData] = data;
-    console.log(cardsData)
+
     userInfo.setUserInfo(userData);
     userInfo.setUserAvatar(userData);
     cardList.renderItems(cardsData);
@@ -121,6 +121,10 @@ const openImagePopup = (evt) => {
 }
 
 
+const popupTypeConfirm = new PopupWithConfirm(deleteCardPopup);
+popupTypeConfirm.setEventListeners();
+
+
 const createCard = (data) => {
   const card = new Card(data, "#place-template", openImagePopup, userId, {
     handleDeleteCard: (cardId) => {
@@ -135,11 +139,17 @@ const createCard = (data) => {
             console.log(err);
           })
       })
-    }, handleLikeClick: (data) => {
-      const promise = card.isLiked() ? api.deleteCardLike(data) : api.addCardLike(data);
-      promise
+    },
+    handleSetLike: (cardId) => {
+      api.addCardLike(cardId)
         .then((data) => {
-          card.setLike(data);
+          card.handleLikeCard(data)
+        })
+    },
+    handleDeleteLike: (cardId) => {
+      api.deleteCardLike(cardId)
+        .then((data) => {
+          card.handleLikeCard(data)
         })
     }
   })
@@ -188,11 +198,5 @@ profileAvatarEditButton.addEventListener('click', () => {
 })
 
 
-
-
-
-
-const popupTypeConfirm = new PopupWithConfirm(deleteCardPopup);
-popupTypeConfirm.setEventListeners();
 
 
