@@ -1,35 +1,10 @@
 export {
-    initialCards, profilePopup, buttonShowProfilePopup, buttonHideProfilePopup, profileFormElement,
+    profilePopup, buttonShowProfilePopup, buttonHideProfilePopup, profileFormElement,
     nameInput, jobInput, profileName, profileJob, buttonShowCardPopup, cardPopup, buttonHideCardPopup,
     imageAddFormElement, placesContainer, cardTitleInput, cardLinkInput, config, imagePopup
 }
 
-const initialCards = [
-    {
-        name: "Архыз",
-        link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
-    },
-    {
-        name: "Челябинская область",
-        link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
-    },
-    {
-        name: "Иваново",
-        link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
-    },
-    {
-        name: "Камчатка",
-        link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
-    },
-    {
-        name: "Холмогорский район",
-        link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
-    },
-    {
-        name: "Байкал",
-        link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
-    },
-];
+
 
 const profilePopup = document.querySelector(".popup_type_edit");
 const buttonShowProfilePopup = document.querySelector(".profile__button");
@@ -61,6 +36,17 @@ export const buttonHideImagePopup = document.querySelector(
 );
 export const imageName = document.querySelector(".popup__description");
 export const photo = document.querySelector(".popup__photo");
+
+
+export const deleteCardPopup = document.querySelector('.popup_type_confirm');
+export const buttonShowConfirmPopup = document.querySelector('.element__trash-button');
+
+
+export const avatarEditPopup = document.querySelector('.popup_type_edit-avatar');
+export const profileAvatarEditButton = document.querySelector('.profile__image-edit-button');
+export const profileAvatar = document.querySelector('.profile__image');
+export const avatarEditFormElement = document.querySelector('.popup__form_type_edit-avatar');
+
 
 const config = {
     inputSelector: ".popup__form-item",

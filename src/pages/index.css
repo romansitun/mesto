@@ -40,3 +40,11 @@
 @import url(../blocks/popup/_form-item-error/popup__form-item-error.css);
 @import url(../blocks/popup/_form-item-error/_active/popup__form-item-error_active.css);
 @import url(../blocks/popup/__form-button/_inactive/popup__form-button_inactive.css);
+
+@import url(../blocks/profile/__image-edit-button/profile__image-edit-button.css);
+@import url(../blocks/profile/__image-edit/profile__image-edit.css);
+@import url(../blocks/element/__like-container/element__like-container.css);
+@import url(../blocks/element/__like-count/element__like-count.css);
+
+@import url(../blocks/popup/__form-button/_action_confirm/popup__form-button_action_confirm.css);
+@import url(../blocks/popup/__title/_place_confirm/popup__title_place_confirm.css);
