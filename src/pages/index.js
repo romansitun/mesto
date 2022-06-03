@@ -24,8 +24,8 @@ const api = new Api({
 });
 
 
-let userId = null;
 
+let userId;
 
 api.getInitialData()
   .then((data) => {
@@ -35,7 +35,6 @@ api.getInitialData()
     userInfo.setUserAvatar(userData);
     cardList.renderItems(cardsData);
     userId = userData._id;
-
   })
   .catch((err) => {
     console.log(err);
@@ -140,19 +139,27 @@ const createCard = (data) => {
           })
       })
     },
-    handleSetLike: (cardId) => {
-      api.addCardLike(cardId)
+    handleSetLike: (data) => {
+      api.addCardLike(data)
         .then((data) => {
           card.handleLikeCard(data)
         })
+        .catch((err) => {
+          console.log(err);
+        })
     },
-    handleDeleteLike: (cardId) => {
-      api.deleteCardLike(cardId)
+    handleDeleteLike: (data) => {
+      api.deleteCardLike(data)
         .then((data) => {
           card.handleLikeCard(data)
+        })
+        .catch((err) => {
+          console.log(err);
         })
     }
   })
+
+
   const cardElement = card.generateCard();
   return cardElement;
 };
