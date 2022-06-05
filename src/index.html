@@ -74,6 +74,7 @@
         >
           <input
             id="firstname-input"
+            placeholder="Имя"
             type="text"
             class="popup__form-item popup__form-item_type_name"
             name="firstname"
@@ -87,6 +88,7 @@
 
           <input
             id="info-input"
+            placeholder="Профессиональная деятельность"
             type="text"
             class="popup__form-item popup__form-item_type_job"
             name="info"
@@ -215,7 +217,7 @@
             name="link"
             id="link-input"
             aria-label="Введите ссылку на изображение"
-            placeholder="Ссылка на картинку"
+            placeholder="Ссылка на автар"
             required
           />
           <span class="link-input-error popup__form-item-error"></span>
@@ -245,12 +247,7 @@
               class="element__like-button"
               type="button"
               aria-label="Поставить лайк"
-            >
-              <img
-                src="<%=require('./images/like-button.svg')%>"
-                alt="Кнопка Лайк"
-              />
-            </button>
+            ></button>
             <span class="element__like-count">0</span>
           </div>
         </div>

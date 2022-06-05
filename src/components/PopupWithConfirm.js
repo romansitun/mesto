@@ -4,7 +4,17 @@ export default class PopupWithConfirm extends Popup {
     constructor(popupElement) {
         super(popupElement);
         this._form = this._popupElement.querySelector(".popup__form");
+        this._submitButton = this._form.querySelector('.popup__form-button');
+        this._submitButtonValue = this._submitButton.textContent;
     }
+    renderDeleteLoading(isLoading) {
+        if (isLoading) {
+            this._submitButton.textContent = 'Удаление...'
+        } else {
+            this._submitButton.textContent = this._submitButtonValue;
+        }
+    }
+
     submitCallback(removing) {
         this._handleSubmit = removing;
     }
@@ -17,5 +27,7 @@ export default class PopupWithConfirm extends Popup {
             this._handleSubmit();
         });
     }
+
+
 
 }

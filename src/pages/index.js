@@ -41,6 +41,8 @@ api.getInitialData()
   })
 
 
+
+
 const userInfo = new UserInfo(profileName, profileJob, profileAvatar)
 
 
@@ -127,8 +129,13 @@ popupTypeConfirm.setEventListeners();
 const createCard = (data) => {
   const card = new Card(data, "#place-template", openImagePopup, userId, {
     handleDeleteCard: (cardId) => {
+
+
       popupTypeConfirm.open();
+
+
       popupTypeConfirm.submitCallback(() => {
+        popupTypeConfirm.renderDeleteLoading(true);
         api.deleteCard(cardId)
           .then(() => {
             popupTypeConfirm.close();
@@ -136,6 +143,10 @@ const createCard = (data) => {
           })
           .catch((err) => {
             console.log(err);
+          })
+          .finally(() => {
+            popupTypeConfirm.renderDeleteLoading(false);
+            popupTypeConfirm.close()
           })
       })
     },

@@ -5,11 +5,11 @@ export default class UserInfo {
         this._avatar = profileAvatar;
     }
     getUserInfo() {
-        const userInfo = {
+        return {
             name: this._name.textContent,
             about: this._job.textContent
         }
-        return userInfo
+
     }
 
     setUserInfo(data) {
