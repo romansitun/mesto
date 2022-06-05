@@ -74,9 +74,14 @@ export default class Card {
     this._likesCount.textContent = this._likes.length;
     this._setEventListeners();
     this._hasDeleteButton();
-
+    this._isLiked();
 
     return this._element;
+  }
+
+  _isLiked() {
+    if (this._likes.find(user => user._id === this._userId))
+      this._likeBtn.classList.add('element__like-button_active');;
   }
 
 

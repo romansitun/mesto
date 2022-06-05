@@ -18,6 +18,7 @@ import PopupWithConfirm from '../components/PopupWithConfirm';
 import Api from '../components/Api';
 
 
+
 const api = new Api({
   serverUrl: 'https://mesto.nomoreparties.co/v1/cohort-42/',
   token: 'da2b0bcf-d08e-4c4f-a5b5-5131bea0378d',
@@ -30,17 +31,14 @@ let userId;
 api.getInitialData()
   .then((data) => {
     const [userData, cardsData] = data;
-
+    userId = userData._id;
     userInfo.setUserInfo(userData);
     userInfo.setUserAvatar(userData);
     cardList.renderItems(cardsData);
-    userId = userData._id;
   })
   .catch((err) => {
     console.log(err);
   })
-
-
 
 
 const userInfo = new UserInfo(profileName, profileJob, profileAvatar)
